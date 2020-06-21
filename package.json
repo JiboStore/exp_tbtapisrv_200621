@@ -1,0 +1,8 @@
+{
+  "name": "exp_tbtapisrv",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/JiboStore/exp_tbtapisrv_200621.git",
+  "author": "Hakim Hauston <hakim.hauston@storms.com>",
+  "license": "MIT"
+}
