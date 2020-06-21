@@ -19,4 +19,5 @@ import { Log } from 'utils/log';
 module.exports = api => {
 	api.route('/listusers').get(User.listusers);
 	api.route('/testusers').all(User.testusers);
+	// api.route('/tu/:theparams').all(User.testusers); // http://localhost:3000/tu/hehe => {"theparams":"hehe"}
 };
