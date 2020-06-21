@@ -1,4 +1,4 @@
-import {Log} from '../utils/log';
+import {Log} from '_utils/log';
 
 exports.listusers = (req, res) => {
     const params = req.params || {};

@@ -1,3 +1,13 @@
 {
-    "presets": ["es2015"]
+    "presets": ["es2015"],
+    "plugins": [
+        ["module-resolver", {
+          "root": ["./src"],
+          "alias": {
+            "_utils": "./src/utils",
+            "test": "./test",
+            "underscore": "lodash"
+          }
+        }]
+      ]
 }

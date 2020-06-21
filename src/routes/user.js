@@ -1,5 +1,5 @@
 import User from '../controllers/user';
-import { Log } from '../utils/log';
+import { Log } from 'utils/log';
 
 // module.exports = api => {
 // 	api.route('/users').get(User.list);
