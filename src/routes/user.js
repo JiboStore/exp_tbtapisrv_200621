@@ -1,4 +1,4 @@
-// import User from '../controllers/user';
+import User from '../controllers/user';
 import { Log } from '../utils/log';
 
 // module.exports = api => {
@@ -9,8 +9,13 @@ import { Log } from '../utils/log';
 // 	api.route('/users/:userId').delete(User.delete);
 // };
 
+// working, this is how it works
+// module.exports = api => {
+// 	api.route('/test').get((req, res) => {
+// 		Log.debug('user', 'running test route');
+// 	});
+// };
+
 module.exports = api => {
-	api.route('/test').get((req, res) => {
-		Log.debug('user', 'running test route');
-	});
-}
+	api.route('/listusers').get(User.listusers);
+};

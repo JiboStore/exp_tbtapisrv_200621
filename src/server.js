@@ -109,8 +109,8 @@ api.listen(port, err => {
     Log.debug('server', 'success: ' + port);
 });
 
-api.on('error', onError);
-api.on('listening', onListening);
+api.on('error', onError); // not called
+api.on('listening', onListening); // not called
 
 Log.debug('server', 'end of file server.js');
 
