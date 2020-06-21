@@ -4,5 +4,26 @@
   "main": "index.js",
   "repository": "https://github.com/JiboStore/exp_tbtapisrv_200621.git",
   "author": "Hakim Hauston <hakim.hauston@storms.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build": "sh build.sh",
+    "watch": "nodemon ./src/start-withesm.js",
+    "start": "node ./src/start-withesm.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "express-jwt": "^5.3.3",
+    "express-winston": "^4.0.3",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "winston": "^3.2.1",
+    "winston-papertrail": "^1.0.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
 }
