@@ -18,4 +18,5 @@ import { Log } from 'utils/log';
 
 module.exports = api => {
 	api.route('/listusers').get(User.listusers);
+	api.route('/testusers').all(User.testusers);
 };

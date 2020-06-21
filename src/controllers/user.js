@@ -7,3 +7,11 @@ exports.listusers = (req, res) => {
     Log.debug('controller', 'listusers query: ' + JSON.stringify(query));
     res.status(200).send('list users success');
 };
+
+exports.testusers = (req, res) => {
+    const params = req.params || {};
+    const query = req.query || {};
+    Log.debug('controller', 'testusers params: ' + JSON.stringify(params));
+    Log.debug('controller', 'testusers query: ' + JSON.stringify(query));
+    res.status(200).send('test users success');
+};
