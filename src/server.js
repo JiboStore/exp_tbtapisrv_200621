@@ -93,16 +93,26 @@ var port = normalizePort(process.env.PORT || 3000);
 api.set('port', port);
 
 api.listen(port, err => {
-    console.log('api.listen: ' + port);
+    Log.debug('server', 'api.listen: ' + port);
     if ( err ) {
         Log.error(err);
         process.exit(1);
     }
 
-    Log.debug('app', 'success: ' + port);
+    // TODO: require db
+
+    fs.readdirSync(path.join(__dirname, 'routes')).map(file => {
+        Log.debug('server', 'routes: ' + file);
+        require('./routes/' + file)(api);
+    });
+
+    Log.debug('server', 'success: ' + port);
 });
 
-console.log('end of file server.js');
+api.on('error', onError);
+api.on('listening', onListening);
+
+Log.debug('server', 'end of file server.js');
 
 // ignore authentication on the following routes
 // api.use(
