@@ -6,7 +6,13 @@ import {Log} from '_utils/log';
 
 mongoose.Promise = global.Promise;
 
-const connection = mongoose.connect(process.env.MONGODB_URI);
+const connOptions = {
+	useNewUrlParser: true,
+	useUnifiedTopology: true
+}
+const connection = mongoose.connect(process.env.MONGODB_URI, connOptions);
+
+mongoose.set('useCreateIndex', true);
 
 connection
 	.then(db => {

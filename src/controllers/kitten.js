@@ -1,11 +1,15 @@
 import {Log} from '_utils/log';
 import Kitten from 'models/kitten';
 
-exports.listkittens = (req, res) => {
+exports.listkittens = async (req, res) => {
     const params = req.params || {};
     const query = req.query || {};
     Log.debug('controller', 'listkittens params: ' + JSON.stringify(params));
     Log.debug('controller', 'listkittens query: ' + JSON.stringify(query));
+    const cursor = Kitten.find({}).cursor();
+    for ( let doc = await cursor.next(); doc != undefined; doc = await cursor.next()) {
+        Log.debug('controller', 'listkittens doc: ' + JSON.stringify(doc));
+    }
     res.status(200).send('list kittens success');
 };
 
@@ -25,7 +29,7 @@ exports.testkittens = (req, res) => {
         })
         .catch(e => {
             Log.debug('controller', 'kitten create error: ' + JSON.stringify(e));
-            res.status(500).send(err);
+            res.status(500).send(e);
         });
     // res.status(200).send('test kittens success');
 };
