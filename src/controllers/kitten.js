@@ -1,7 +1,7 @@
 import {Log} from '_utils/log';
 import Kitten from 'models/kitten';
 
-exports.listkittens = async (req, res) => {
+const listkittens = async (req, res) => {
     const params = req.params || {};
     const query = req.query || {};
     Log.debug('controller', 'listkittens params: ' + JSON.stringify(params));
@@ -13,7 +13,7 @@ exports.listkittens = async (req, res) => {
     res.status(200).send('list kittens success');
 };
 
-exports.testkittens = (req, res) => {
+const testkittens = (req, res) => {
     const params = req.params || {};
     const query = req.query || {};
     Log.debug('controller', 'testkittens params: ' + JSON.stringify(params));
@@ -33,3 +33,8 @@ exports.testkittens = (req, res) => {
         });
     // res.status(200).send('test kittens success');
 };
+
+export default {
+    listkittens,
+    testkittens,
+}
