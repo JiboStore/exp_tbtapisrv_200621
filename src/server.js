@@ -104,7 +104,12 @@ api.listen(port, err => {
 
     fs.readdirSync(path.join(__dirname, 'routes')).map(file => {
         Log.debug('server', 'routes: ' + file);
-        require('./routes/' + file)(api);
+        var router = require('./routes/' + file).default;
+        // https://stackoverflow.com/questions/45697628/es6-import-as-alias-vs-import-alias => save the day
+        // Log.debug('server', 'router: ' + JSON.stringify(router));
+        // Log.debug('server', router);
+        router(api);
+        // require('./routes/' + file)(api); // have to use `module.exports = api => {};`
     });
 
     Log.debug('server', 'success: ' + port);
