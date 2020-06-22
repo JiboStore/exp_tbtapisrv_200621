@@ -100,6 +100,7 @@ api.listen(port, err => {
     }
 
     // TODO: require db
+    require('./utils/db');
 
     fs.readdirSync(path.join(__dirname, 'routes')).map(file => {
         Log.debug('server', 'routes: ' + file);
