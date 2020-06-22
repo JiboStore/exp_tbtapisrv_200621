@@ -1,4 +1,4 @@
-import Kitten from '../controllers/kitten';
+import * as Kitten from '../controllers/kitten';
 import { Log } from 'utils/log';
 
 module.exports = api => {
