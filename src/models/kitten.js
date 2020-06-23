@@ -18,4 +18,9 @@ export const KittenSchema = new Schema(
     { collection: 'kittens'}
 );
 
-module.exports = exports = mongoose.model('Kitten', KittenSchema);
+// one way to export default:
+// module.exports = exports = mongoose.model('Kitten', KittenSchema);
+
+// another way to export default:
+const Kitten = mongoose.model('Kitten', KittenSchema);
+export default Kitten;
