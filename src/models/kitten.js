@@ -10,10 +10,10 @@ export const KittenSchema = new Schema(
             unique: true,
             required: true
         },
-        owner: {
-            type: String,
-            required: false
-        },
+        // owner: {
+        //     type: String,
+        //     required: false
+        // },
         age: {
             type: Number,
             default: 0
@@ -21,6 +21,13 @@ export const KittenSchema = new Schema(
     },
     { collection: 'kittens'}
 );
+
+KittenSchema.add({
+    owner: {
+        type: String,
+        required: false
+    }
+});
 
 // cannot use () => {}; `this` == undefined
 /*
