@@ -10,6 +10,10 @@ export const KittenSchema = new Schema(
             unique: true,
             required: true
         },
+        owner: {
+            type: String,
+            required: false
+        },
         age: {
             type: Number,
             default: 0
@@ -17,6 +21,21 @@ export const KittenSchema = new Schema(
     },
     { collection: 'kittens'}
 );
+
+// cannot use () => {}; `this` == undefined
+/*
+KittenSchema.methods.toJSON = function () {
+    var obj = this.toObject();
+    delete obj.__v;
+    return obj;
+}
+*/
+
+KittenSchema.method('toJSON', function () {
+    var obj = this.toObject();
+    delete obj.__v;
+    return obj;
+});
 
 // one way to export default:
 // module.exports = exports = mongoose.model('Kitten', KittenSchema);

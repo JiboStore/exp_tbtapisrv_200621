@@ -7,10 +7,13 @@ export const listkittens = async (req, res) => {
     Log.debug('controller', 'listkittens params: ' + JSON.stringify(params));
     Log.debug('controller', 'listkittens query: ' + JSON.stringify(query));
     const cursor = Kitten.find({}).cursor();
+    const allKittens = [];
     for ( let doc = await cursor.next(); doc != undefined; doc = await cursor.next()) {
         Log.debug('controller', 'listkittens doc: ' + JSON.stringify(doc));
+        allKittens.push(doc);
     }
-    res.status(200).send('list kittens success');
+    // res.status(200).send('list kittens success');
+    res.status(200).json(allKittens);
 };
 
 export const testkittens = (req, res) => {
@@ -21,7 +24,9 @@ export const testkittens = (req, res) => {
     const kitty = {
         name: query.name || 'nameless',
         age: query.age || 1,
+        owner: query.owner || 'ownerless',
     };
+    // const kitty = { ...query }; // spread operator not working
     Kitten.create(kitty)
         .then(k => {
             Log.debug('controller', 'kitten created ' + JSON.stringify(k));
